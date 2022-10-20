@@ -1,6 +1,7 @@
 import './App.css';
 import HeaderBar from "./components/HeaderBar"
 import ExampleCard from "./components/ExampleCard"
+import DenseTable from './components/DemoTable';
 
 function App() {
   return (
@@ -21,7 +22,10 @@ function App() {
       </header> */}
       <HeaderBar />
       <div style={{ padding: 10 }}>
-
+        <DenseTable />
+        <ExampleCard />
+        <ExampleCard />
+        <ExampleCard />
         <ExampleCard />
       </div>
     </div>
