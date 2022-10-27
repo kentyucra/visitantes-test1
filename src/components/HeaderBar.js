@@ -228,6 +228,7 @@ export default function HeaderBar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      <div style={{ paddingBottom: "1em" }} />
     </Box>
   );
 }
