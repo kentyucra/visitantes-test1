@@ -6,28 +6,42 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import { Button, CircularProgress, InputAdornment } from '@mui/material';
+import { Button, InputAdornment } from '@mui/material';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
+
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import { v4 as uuidv4 } from 'uuid';
+
 
 
 function AnuncioForm() {
   const [age, setAge] = React.useState('');
-  const [selectedPhoto, setSelectedPhoto] = React.useState(undefined)
-  const [preview, setPreview] = React.useState(undefined)
+  const [images, setImages] = React.useState([])
+  const [uuid,] = React.useState(uuidv4);
 
   const handleChange = (event) => {
     setAge(event.target.value);
   };
 
+  const extractImagesFromLocalStorage = () => {
+    const imagesURL = []
+    Object.keys(localStorage).forEach((key) => {
+      if (key.substring(0, 46) === `${uuid}_objectURL`) {
+        imagesURL.push(localStorage.getItem(key))
+      }
+
+    })
+    return imagesURL
+  }
+
   const fileSelectedHandler = (event) => {
-    console.log("event = ", event.target)
     if (event.target.files[0]) {
-      console.log("inside if event = ", event.target)
-      setSelectedPhoto(event.target.files[0])
       const objectUrl = URL.createObjectURL(event.target.files[0])
-      console.log("objectURL = ", objectUrl)
-      setPreview(objectUrl)
+      const size = localStorage.length
+      localStorage.setItem(`${uuid}_objectURL_${size}`, objectUrl)
+      setImages(extractImagesFromLocalStorage());
     }
   }
 
@@ -100,15 +114,30 @@ function AnuncioForm() {
             startIcon={<AddAPhotoIcon />}
           >
 
-            Subir Foto
+            Anhadir Foto
             <input
               type="file"
               hidden
               onChange={fileSelectedHandler}
             />
           </Button>
-          {selectedPhoto ? <img src={preview} style={{ width: 200 }} /> : <CircularProgress />}
+          {/* {selectedPhoto ? <img src={preview} style={{ width: 200 }} /> : <CircularProgress />} */}
           {/* <img src={selectedPhoto} /> */}
+        </Grid>
+        <Grid item>
+          <ImageList
+            sx={{
+              gridAutoFlow: "column",
+              gridTemplateColumns: "repeat(auto-fit, minmax(160px,1fr)) !important",
+              gridAutoColumns: "minmax(160px, 1fr)"
+            }}
+          >
+            {images.map((image) => (
+              <ImageListItem>
+                <img src={image} style={{ width: 200 }} />
+              </ImageListItem>
+            ))}
+          </ImageList>
         </Grid>
       </Grid>
     </Box >
