@@ -1,11 +1,11 @@
 import './App.css';
-import HeaderBar from './components/HeaderBar';
 import AppRouter from './components/AppRouter';
+import ButtonAppBar from './components/SimpleHeader';
 
 function App() {
   return (
     <div className="App">
-      <HeaderBar />
+      <ButtonAppBar />
       <AppRouter />
     </div>
   );
