@@ -23,6 +23,12 @@ function App() {
       <div style={{ padding: 10 }}>
 
         <ExampleCard />
+        <ExampleCard />
+        <ExampleCard />
+        <ExampleCard />
+        <ExampleCard />
+        <ExampleCard />
+        <ExampleCard />
       </div>
     </div>
   );
