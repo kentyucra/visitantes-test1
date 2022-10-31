@@ -46,7 +46,7 @@ export default function ExampleCard() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
+        title="Paella de Chorizo y Calamares"
         subheader="September 14, 2016"
       />
       <CardMedia

@@ -173,7 +173,7 @@ export default function HeaderBar() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+            Avisos para compromisos
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -228,6 +228,7 @@ export default function HeaderBar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      <div style={{ paddingBottom: "1em" }} />
     </Box>
   );
 }
