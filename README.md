@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+To run the project locally
+
+### `npm run start-local`
+
 In the project directory, you can run:
 
 ### `npm start`
