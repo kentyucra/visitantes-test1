@@ -14,7 +14,7 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { v4 as uuidv4 } from "uuid";
 
-function AdForm() {
+function LocalRental() {
   const [age, setAge] = React.useState("");
   const [images, setImages] = React.useState([]);
   const [uuid] = React.useState(uuidv4);
@@ -46,24 +46,7 @@ function AdForm() {
     <Box sx={{ minWidth: 120 }}>
       <Grid container direction="column" spacing={2}>
         <Grid item>
-          <FormControl>
-            <InputLabel id="demo-simple-select-label">Categoria</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={age}
-              label="Age"
-              onChange={handleChange}
-              style={{ minWidth: 150 }}
-            >
-              <MenuItem value={10}>Venta de Propiedades</MenuItem>
-              <MenuItem value={20}>Venta de Vehiculos</MenuItem>
-              <MenuItem value={30}>Alquiler de locales para Eventos</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item>
-          <TextField id="titulo" label="Titulo" variant="outlined" />
+          <TextField id="titulo" label="Nombre del Local" variant="outlined" />
         </Grid>
         <Grid item>
           <TextField id="direccion" label="Direccion" variant="outlined" />
@@ -89,6 +72,18 @@ function AdForm() {
         </Grid>
         <Grid item>
           <TextField
+            id="capacidad"
+            label="Capacidad"
+            variant="outlined"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start">personas</InputAdornment>
+              ),
+            }}
+          />
+        </Grid>
+        <Grid item>
+          <TextField
             id="area"
             label="Area"
             variant="outlined"
@@ -104,14 +99,15 @@ function AdForm() {
             id="filled-multiline-static"
             label="Descripcion"
             multiline
-            rows={4}
+            rows={10}
+            cols={20}
             defaultValue="Default Value"
           />
         </Grid>
         <Grid item>
           <TextField
             id="contacto"
-            label="Contacto (Telefono)"
+            label="Contacto (Telefono/Celular)"
             variant="outlined"
             InputProps={{
               startAdornment: (
@@ -128,7 +124,7 @@ function AdForm() {
             component="label"
             startIcon={<AddAPhotoIcon />}
           >
-            Anhadir Foto
+            Añadir Foto
             <input type="file" hidden onChange={fileSelectedHandler} />
           </Button>
           {/* {selectedPhoto ? <img src={preview} style={{ width: 200 }} /> : <CircularProgress />} */}
@@ -155,4 +151,4 @@ function AdForm() {
   );
 }
 
-export default AdForm;
+export default LocalRental;
